@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace — FarmDirect | Fresh Produce Direct from Farmers</title>
+  <meta name="description" content="Explore fresh organic vegetables, orchard fruits, stone-ground grains, cold-pressed oils, and raw forest honey directly from verified farmers.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-marketplace">
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <span>🌱 Sunrise Harvest: Today's produce was harvested between 5:30 AM & 8:00 AM.</span>
+    <span class="highlight-badge">Direct Farm Guarantee</span>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🌱</div>
+        <span>Farm<span class="accent">Direct</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link active">Marketplace</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="track-order.html" class="nav-link">Track Order</a>
+        <a href="farmer-dashboard.html" class="nav-link" title="Farmer Inventory Portal">Farmer Hub</a>
+        <a href="admin-dashboard.html" class="nav-link" title="Marketplace Management">Admin</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
+        </a>
+
+        <div class="auth-nav-slot">
+          <a href="login.html" class="btn btn-sm btn-secondary">Log In</a>
+          <a href="register.html" class="btn btn-sm btn-primary">Register</a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 2rem;">
+    <!-- Marketplace Title & Intro -->
+    <div style="margin-bottom: 1.5rem;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--primary-900); letter-spacing: -0.02em;">
+        Fresh Harvest Marketplace
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">
+        Support independent rural growers. Every item is soil-grown, harvested to order, and shipped without middleman markup.
+      </p>
+    </div>
+
+    <!-- Marketplace Layout: Filter Sidebar + Products Grid -->
+    <div class="marketplace-layout">
+
+      <!-- Left Filter Sidebar -->
+      <aside class="filter-sidebar">
+        <div class="filter-header">
+          <h3>Filter Harvests</h3>
+          <button class="reset-filter-btn" onclick="resetMarketplaceFilters()">Reset All</button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <h4 class="filter-title">Produce Category</h4>
+          <div class="filter-options">
+            <label class="filter-label">
+              <span><input type="checkbox" class="category-filter-checkbox" value="all" checked> All Categories</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="category-filter-checkbox" value="vegetables"> Fresh Vegetables</span>
+              <span class="count">6</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="category-filter-checkbox" value="fruits"> Orchard Fruits</span>
+              <span class="count">4</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="category-filter-checkbox" value="grains"> Grains & Flours</span>
+              <span class="count">3</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="category-filter-checkbox" value="honey-oils"> Raw Honey & Oils</span>
+              <span class="count">3</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Range Slider -->
+        <div class="filter-group">
+          <h4 class="filter-title">Maximum Price</h4>
+          <div class="price-slider-wrap">
+            <input type="range" id="price-range" class="price-range-slider" min="30" max="1000" step="10" value="1000">
+            <div class="price-values">
+              <span>₹30</span>
+              <span id="price-range-val">₹1000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Origin Location Filter -->
+        <div class="filter-group">
+          <h4 class="filter-title">Farm Origin Region</h4>
+          <div class="filter-options">
+            <label class="filter-label">
+              <span><input type="checkbox" class="location-filter-checkbox" value="all" checked> All Regions</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="location-filter-checkbox" value="Maharashtra"> Maharashtra</span>
+              <span class="count">6</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="location-filter-checkbox" value="Karnataka"> Karnataka</span>
+              <span class="count">2</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="location-filter-checkbox" value="Rajasthan"> Rajasthan</span>
+              <span class="count">2</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="location-filter-checkbox" value="Himachal"> Himachal Pradesh</span>
+              <span class="count">1</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="location-filter-checkbox" value="Tamil Nadu"> Tamil Nadu</span>
+              <span class="count">2</span>
+            </label>
+            <label class="filter-label">
+              <span><input type="checkbox" class="location-filter-checkbox" value="Kashmir"> Jammu & Kashmir</span>
+              <span class="count">1</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Guarantee Badge Box -->
+        <div style="background: var(--primary-50); border: 1px solid var(--primary-100); border-radius: var(--radius-md); padding: 1rem; font-size: 0.8rem; color: var(--primary-900);">
+          <strong style="display: block; margin-bottom: 0.35rem;">🚜 The FarmDirect Promise</strong>
+          If any produce arrives damaged or less than pristine, get an instant 100% refund credited back with zero questions asked.
+        </div>
+      </aside>
+
+      <!-- Right Main Content Area -->
+      <section>
+        <!-- Top Toolbar -->
+        <div class="marketplace-toolbar">
+          <div class="search-box-inline">
+            <span>🔍</span>
+            <input type="text" id="market-search-input" placeholder="Search crops, farmers (e.g. Ramesh, Apples, Ghee)...">
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <span id="results-count" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">
+              Showing 16 Fresh Produce Items
+            </span>
+
+            <div class="sort-select-wrap">
+              <label for="market-sort-select">Sort by:</label>
+              <select id="market-sort-select" class="sort-select">
+                <option value="featured">Featured First</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="name">Alphabetical (A - Z)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div id="marketplace-products-grid" class="products-grid">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>🌱 Farm<span style="color: #34d399;">Direct</span></h3>
+        <p>A mission-driven agricultural technology platform bridging the gap between independent family farmers and conscientious urban households with zero unnecessary middlemen.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Marketplace</h4>
+        <div class="footer-links">
+          <a href="marketplace.html?cat=vegetables">Fresh Vegetables</a>
+          <a href="marketplace.html?cat=fruits">Orchard Fruits</a>
+          <a href="marketplace.html?cat=grains">Grains & Flours</a>
+          <a href="marketplace.html?cat=honey-oils">Raw Honey & Cold Oils</a>
+          <a href="marketplace.html">All Produce</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Growers & Admin</h4>
+        <div class="footer-links">
+          <a href="register.html?role=farmer">Register as Farmer</a>
+          <a href="login.html">Farmer Login</a>
+          <a href="farmer-dashboard.html">Farmer Inventory Portal</a>
+          <a href="admin-dashboard.html">Admin Verification Desk</a>
+          <a href="track-order.html">Track Order Status</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Support</a>
+          <a href="contact.html#faq">FAQs & Return Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 FarmDirect Technologies. Pure HTML5, CSS3 & Vanilla JavaScript.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">View Cart</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

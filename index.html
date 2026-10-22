@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FarmDirect — Farmer-to-Customer Marketplace | Fresh Harvest, Zero Middlemen</title>
+  <meta name="description" content="Direct from local farms to your kitchen. Buy fresh vegetables, orchard fruits, grains, raw honey & cold-pressed oils directly from verified farmers.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-home">
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <span>Connecting 12,500+ smallholder farmers directly to your family table.</span>
+    <span class="highlight-badge">0% Commission • 100% Direct Payouts</span>
+  </div>
+
+  <!-- Main Sticky Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🌱</div>
+        <span>Farm<span class="accent">Direct</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="track-order.html" class="nav-link">Track Order</a>
+        <a href="farmer-dashboard.html" class="nav-link" title="Farmer Inventory Portal">Farmer Hub</a>
+        <a href="admin-dashboard.html" class="nav-link" title="Marketplace Management">Admin</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
+        </a>
+
+        <div class="auth-nav-slot">
+          <a href="login.html" class="btn btn-sm btn-secondary">Log In</a>
+          <a href="register.html" class="btn btn-sm btn-primary">Register</a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span>🌿</span>
+            <span>Ethical Agriculture & Fair Trade Marketplace</span>
+          </div>
+
+          <h1 class="hero-title">
+            Farm Fresh Harvest, <br><span class="highlight">Zero Middlemen.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Directly connect with independent family farmers across India. Experience hand-picked organic fruits, crisp heirloom vegetables, and stone-ground grains delivered within 24 hours of harvest.
+          </p>
+
+          <!-- Search Bar -->
+          <form class="hero-search-wrapper" onsubmit="event.preventDefault(); const val=document.getElementById('home-search').value; window.location.href='marketplace.html?search='+encodeURIComponent(val);">
+            <span class="hero-search-icon">🔍</span>
+            <input type="text" id="home-search" class="hero-search-input" placeholder="Search organic mangoes, desi tomatoes, cold-pressed oils...">
+            <button type="submit" class="hero-search-btn">Find Fresh Crops</button>
+          </form>
+
+          <!-- Quick Search Tags -->
+          <div class="hero-quick-tags">
+            <span>Popular Harvests:</span>
+            <a href="marketplace.html?search=Mango" class="tag">Alphonso Mango</a>
+            <a href="marketplace.html?search=Tomato" class="tag">Desi Tomatoes</a>
+            <a href="marketplace.html?search=Honey" class="tag">Wild Honey</a>
+            <a href="marketplace.html?search=Wheat" class="tag">Sharbati Wheat</a>
+          </div>
+
+          <!-- Dual CTA Buttons -->
+          <div class="hero-cta-buttons">
+            <a href="marketplace.html" class="btn btn-accent btn-lg">Browse Marketplace</a>
+            <a href="register.html?role=farmer" class="btn btn-outline-white btn-lg">Sell as a Farmer</a>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="hero-visual-card">
+          <div class="hero-main-img-box">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80" alt="Fresh harvest baskets from direct farmers">
+          </div>
+
+          <div class="floating-badge badge-top">
+            <div class="icon-box green">👨‍🌾</div>
+            <div>
+              <h4>100% Direct Payouts</h4>
+              <p>Farmers earn 3.5x higher margins</p>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-bottom">
+            <div class="icon-box gold">⏱️</div>
+            <div>
+              <h4>24-Hour Sunrise Harvest</h4>
+              <p>Picked fresh, delivered crisp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust / Value Proposition Strip -->
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">🚜</div>
+          <div>
+            <h4>Verified Local Farmers</h4>
+            <p>Every grower is soil-tested & personally visited</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🚫</div>
+          <div>
+            <h4>No Middleman Markups</h4>
+            <p>Fair, transparent rates for grower & customer</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🍃</div>
+          <div>
+            <h4>Peak Harvest Nutrition</h4>
+            <p>No chemical wax, cold-storage gassing or fillers</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">📦</div>
+          <div>
+            <h4>Eco-Cold Packaging</h4>
+            <p>100% biodegradable corrugated insulation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fresh Harvest Categories Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Direct Harvest Categories</span>
+          <h2 class="section-title">Explore Seasonal Freshness</h2>
+          <p class="section-subtitle">Pick from our carefully curated farm categories, hand-tended by smallholder agricultural families.</p>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="category-icon-bubble">🥦</div>
+            <h3 class="category-title">Fresh Vegetables</h3>
+            <p class="category-count">Tomatoes, Greens, Carrots, Onions & more</p>
+            <a href="marketplace.html?cat=vegetables" class="category-link">Shop Vegetables →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon-bubble">🥭</div>
+            <h3 class="category-title">Orchard Fruits</h3>
+            <p class="category-count">Alphonso Mangoes, Apples, Bananas & Citrus</p>
+            <a href="marketplace.html?cat=fruits" class="category-link">Shop Orchard Fruits →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon-bubble">🌾</div>
+            <h3 class="category-title">Grains & Flours</h3>
+            <p class="category-count">Sharbati Wheat, Aged Basmati & Walnuts</p>
+            <a href="marketplace.html?cat=grains" class="category-link">Shop Grains →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon-bubble">🍯</div>
+            <h3 class="category-title">Raw Honey & Oils</h3>
+            <p class="category-count">Wild Forest Honey, Wood-Pressed Mustard & Ghee</p>
+            <a href="marketplace.html?cat=honey-oils" class="category-link">Shop Honey & Oils →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Produce Marketplace Preview -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Harvest of the Day</span>
+          <h2 class="section-title">Featured Direct From Farm Produce</h2>
+          <p class="section-subtitle">Freshly listed by our verified farmers. Order before 3:00 PM for tomorrow morning's sunrise delivery.</p>
+        </div>
+
+        <div id="featured-products-grid" class="products-grid">
+          <!-- Populated dynamically via script.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="marketplace.html" class="btn btn-primary btn-lg">View All 16+ Farm Produce Listings</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How FarmDirect Works Infographic -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Zero Middlemen Model</span>
+          <h2 class="section-title">How FarmDirect Works</h2>
+          <p class="section-subtitle">A seamless, ethical supply chain created to restore dignity to growers and bring wholesome nutrition to customers.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">👨‍🌾</div>
+            <h3 class="step-title">Farmer Lists Harvest</h3>
+            <p class="step-desc">Growers set their own fair prices and specify exact harvest dates directly on their mobile portal.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">🛒</div>
+            <h3 class="step-title">You Place Order</h3>
+            <p class="step-desc">Browse real farm stories, view crop origins, and customize your household produce basket.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">📦</div>
+            <h3 class="step-title">Harvest & Eco-Pack</h3>
+            <p class="step-desc">Crops are harvested only after receiving your order, gently rinsed, and packed in plastic-free insulation.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-icon">🚚</div>
+            <h3 class="step-title">Direct Cold Delivery</h3>
+            <p class="step-desc">Arrives at your kitchen within 24 hours while 100% of the produce value goes directly to the farmer.</p>
+          </div>
+        </div>
+
+        <!-- Middleman Comparison Chart -->
+        <div class="comparison-section">
+          <h3 style="text-align: center; font-size: 1.6rem; font-weight: 800;">Traditional Mandi Supply Chain vs. FarmDirect</h3>
+          <p style="text-align: center; color: var(--text-muted); margin-bottom: 1.5rem;">See how removing layers of unnecessary middlemen transforms both farmer income and customer freshness.</p>
+
+          <div class="comparison-grid">
+            <div class="comparison-box traditional">
+              <h4>❌ Traditional Middleman Chain</h4>
+              <div class="chain-flow">
+                <div class="chain-step">
+                  <span class="step-badge">Farmer</span> Gets only 15% - 20% of retail price
+                </div>
+                <div class="chain-step">
+                  <span class="step-badge">Local Agent</span> Deducts 8% commission + loading fee
+                </div>
+                <div class="chain-step">
+                  <span class="step-badge">Wholesaler</span> Sits in hot mandi yards for 3 - 5 days
+                </div>
+                <div class="chain-step">
+                  <span class="step-badge">Distributor</span> Gassed with ethylene or artificial wax
+                </div>
+                <div class="chain-step">
+                  <span class="step-badge">Retailer</span> Sells stale produce at 400% inflated price
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: #991b1b; font-weight: 600;">Result: Farmer in debt, produce loses 60% of vital nutrients.</p>
+            </div>
+
+            <div class="comparison-box farmdirect">
+              <h4>✅ FarmDirect Model</h4>
+              <div class="chain-flow">
+                <div class="chain-step">
+                  <span class="step-badge">Farmer</span> Receives 85% - 95% of full consumer price
+                </div>
+                <div class="chain-step">
+                  <span class="step-badge">FarmDirect Hub</span> Direct solar-powered temperature check
+                </div>
+                <div class="chain-step">
+                  <span class="step-badge">Customer</span> Enjoys 24-hr sunrise crisp produce at fair rates
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--primary-900); font-weight: 600;">Result: Thriving rural farmers, peak kitchen taste and zero food waste.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <h3>12,500+</h3>
+          <p>Verified Smallholder Farmers</p>
+        </div>
+        <div class="stat-item">
+          <h3>48,000+</h3>
+          <p>Happy Urban Households</p>
+        </div>
+        <div class="stat-item">
+          <h3>₹18.4 Cr</h3>
+          <p>Direct Farmer Payouts</p>
+        </div>
+        <div class="stat-item">
+          <h3>340+</h3>
+          <p>Agricultural Villages Connected</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer & Farmer Testimonials -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Voices of the Harvest</span>
+          <h2 class="section-title">What Our Community Says</h2>
+          <p class="section-subtitle">Real experiences from our hardworking growers and conscious urban consumers.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="quote-icon">“</div>
+            <p class="testimonial-text">
+              For 18 years, the mandi brokers paid me ₹12 per kg for my heirloom tomatoes while charging customers ₹50 in the city. On FarmDirect, I sell at ₹45 per kg, make double the profit, and customers praise my harvest!
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=120&q=80" alt="Sunita Shinde" class="author-avatar">
+              <div class="author-info">
+                <h4>Sunita Shinde</h4>
+                <p>Tomato Farmer • Nashik Valley</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">“</div>
+            <p class="testimonial-text">
+              The Alphonso mangoes from Ramesh Patel tasted like childhood again! You can genuinely smell the orchard freshness the moment you open the eco-box. No wax, no chemicals.
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Ananya Deshmukh" class="author-avatar">
+              <div class="author-info">
+                <h4>Ananya Deshmukh</h4>
+                <p>Customer • Mumbai</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">“</div>
+            <p class="testimonial-text">
+              Our wild honey collective in Coorg had no market access except predatory middlemen. FarmDirect gave us a direct digital storefront with instant UPI settlements. It changed our village economy.
+            </p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Meera Devi" class="author-avatar">
+              <div class="author-info">
+                <h4>Meera Devi</h4>
+                <p>Apiary Collective Lead • Coorg</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sell as a Farmer CTA Banner -->
+    <div class="container">
+      <div class="farmer-cta-banner">
+        <div class="farmer-cta-content">
+          <h2>Are You a Farmer? Grow With Us.</h2>
+          <p>Eliminate wholesale middlemen, set your own produce prices, and receive direct digital bank transfers within 24 hours of delivery. Zero listing fee.</p>
+        </div>
+        <div style="flex-shrink: 0;">
+          <a href="register.html?role=farmer" class="btn btn-accent btn-lg">Sell Your Crops Today</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>🌱 Farm<span style="color: #34d399;">Direct</span></h3>
+        <p>A mission-driven agricultural technology platform bridging the gap between independent family farmers and conscientious urban households with zero unnecessary middlemen.</p>
+        <p style="font-size: 0.8rem; color: #a7f3d0;">Direct Payouts • Certified Sustainable • 100% Traceable</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Marketplace</h4>
+        <div class="footer-links">
+          <a href="marketplace.html?cat=vegetables">Fresh Vegetables</a>
+          <a href="marketplace.html?cat=fruits">Orchard Fruits</a>
+          <a href="marketplace.html?cat=grains">Grains & Flours</a>
+          <a href="marketplace.html?cat=honey-oils">Raw Honey & Cold Oils</a>
+          <a href="marketplace.html">Browse All Harvests</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Growers & Admin</h4>
+        <div class="footer-links">
+          <a href="register.html?role=farmer">Register as Farmer</a>
+          <a href="login.html">Farmer Login</a>
+          <a href="farmer-dashboard.html">Farmer Inventory Portal</a>
+          <a href="admin-dashboard.html">Admin Verification Desk</a>
+          <a href="track-order.html">Track Order Status</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>About & Support</h4>
+        <div class="footer-links">
+          <a href="about.html">Our Farm-to-Fork Mission</a>
+          <a href="contact.html">Customer & Farmer Helpdesk</a>
+          <a href="contact.html#faq">Frequently Asked Questions</a>
+          <span style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem; display: block;">Kisan Helpline (Toll-Free):<br><strong style="color: #ffffff;">1800-FARM-DIRECT</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 FarmDirect Technologies. Built with Pure HTML5, CSS3 & Vanilla JavaScript.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="about.html">About Us</a>
+        <a href="marketplace.html">Shop Produce</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="track-order.html">Track Harvest</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

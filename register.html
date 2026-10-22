@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an Account — FarmDirect</title>
+  <meta name="description" content="Join FarmDirect as a conscious customer or register as a farmer to sell directly without middleman cuts.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-register">
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🌱</div>
+        <span>Farm<span class="accent">Direct</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="track-order.html" class="nav-link">Track Order</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="btn btn-sm btn-secondary">Log In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="auth-wrapper" style="max-width: 580px;">
+      <div class="auth-header">
+        <h2>Join the FarmDirect Movement</h2>
+        <p>Choose your account type to get started with zero middleman agriculture.</p>
+      </div>
+
+      <!-- Role Selector Tabs -->
+      <div class="role-tabs">
+        <button type="button" class="role-tab-btn active" id="tab-btn-customer" data-auth-role="customer" onclick="setRegisterRole('customer')">
+          🛍️ Customer Account
+        </button>
+        <button type="button" class="role-tab-btn" id="tab-btn-farmer" data-auth-role="farmer" onclick="setRegisterRole('farmer')">
+          👨‍🌾 Sell as a Farmer
+        </button>
+      </div>
+
+      <!-- Registration Form -->
+      <form onsubmit="handleRegisterForm(event)">
+        <div class="form-group">
+          <label class="form-label" for="reg-name">Full Name *</label>
+          <input type="text" id="reg-name" class="form-control" required placeholder="e.g. Ramesh Patel or Priya Sharma">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address *</label>
+            <input type="email" id="reg-email" class="form-control" required placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Phone Number *</label>
+            <input type="tel" id="reg-phone" class="form-control" required placeholder="+91 98000 12345">
+          </div>
+        </div>
+
+        <!-- Extra Fields for Farmer Role Only -->
+        <div id="farmer-fields" style="display: none; background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary-900); margin-bottom: 0.85rem;">
+            🌾 Farm & Production Details
+          </h4>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-farm-name">Farm / Orchard Name *</label>
+            <input type="text" id="reg-farm-name" class="form-control" placeholder="e.g. Sahyadri Organic Orchards">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="reg-farm-location">Village & District *</label>
+              <input type="text" id="reg-farm-location" class="form-control" placeholder="e.g. Nashik, Maharashtra">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-farm-size">Farm Land Size</label>
+              <input type="text" id="reg-farm-size" class="form-control" placeholder="e.g. 8 Acres">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-crops">Primary Crop Specializations *</label>
+            <input type="text" id="reg-crops" class="form-control" placeholder="e.g. Heirloom Tomatoes, Alphonso Mango, Wheat">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="reg-cert">Farming Method / Certification</label>
+            <select id="reg-cert" class="form-control">
+              <option>100% Certified Organic (NPOP / Jaivik Bharat)</option>
+              <option>Natural / Zero Budget Chemical Free</option>
+              <option>Hydroponic / Protected Farming</option>
+              <option>Traditional Rainfed Sustainable</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-password">Create Password *</label>
+          <input type="password" id="reg-password" class="form-control" required placeholder="Minimum 6 characters">
+          <div class="form-help">Ensure your password contains letters and numbers.</div>
+        </div>
+
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          By creating an account, you agree to the FarmDirect Fair Trade Code of Ethics and Privacy Terms.
+        </div>
+
+        <button type="submit" id="reg-submit-btn" class="btn btn-primary btn-block btn-lg">
+          Complete Customer Registration
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+        Already registered?
+        <a href="login.html" style="color: var(--primary-700); font-weight: 700;">Sign in to your account</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border: none; padding-top: 1rem;">
+      <div>© 2026 FarmDirect Technologies. Pure HTML5, CSS3 & Vanilla JavaScript.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function setRegisterRole(role) {
+      const tabs = document.querySelectorAll('.role-tab-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+
+      const farmerFields = document.getElementById('farmer-fields');
+      const submitBtn = document.getElementById('reg-submit-btn');
+
+      if (role === 'farmer') {
+        document.getElementById('tab-btn-farmer').classList.add('active');
+        farmerFields.style.display = 'block';
+        submitBtn.textContent = 'Register Farm & Open Grower Dashboard';
+      } else {
+        document.getElementById('tab-btn-customer').classList.add('active');
+        farmerFields.style.display = 'none';
+        submitBtn.textContent = 'Complete Customer Registration';
+      }
+    }
+
+    // Auto-detect role from URL params (e.g. register.html?role=farmer)
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("role") === "farmer") {
+        setRegisterRole("farmer");
+      }
+    });
+  </script>
+</body>
+</html>

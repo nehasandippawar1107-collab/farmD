@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Basket & Checkout — FarmDirect</title>
+  <meta name="description" content="Review your fresh harvest basket, apply farmer support promo coupons, and pay directly to verified growers.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-cart">
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <span>Free Cold-Chain Eco Delivery on orders above ₹500.</span>
+    <span class="highlight-badge">Use Coupon: FRESH10 for 10% OFF</span>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🌱</div>
+        <span>Farm<span class="accent">Direct</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="track-order.html" class="nav-link">Track Order</a>
+        <a href="farmer-dashboard.html" class="nav-link" title="Farmer Inventory Portal">Farmer Hub</a>
+        <a href="admin-dashboard.html" class="nav-link" title="Marketplace Management">Admin</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
+        </a>
+
+        <div class="auth-nav-slot">
+          <a href="login.html" class="btn btn-sm btn-secondary">Log In</a>
+          <a href="register.html" class="btn btn-sm btn-primary">Register</a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--primary-900); letter-spacing: -0.02em;">
+          Your Produce Basket
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Direct farm-fresh harvests prepared specially for your delivery slot.
+        </p>
+      </div>
+      <div>
+        <a href="marketplace.html" class="btn btn-secondary btn-sm">← Continue Shopping</a>
+        <button onclick="clearCart()" class="btn btn-sm" style="color: var(--danger); margin-left: 0.5rem;">Clear Basket</button>
+      </div>
+    </div>
+
+    <!-- Cart Layout: Left Items Card + Right Summary Card -->
+    <div class="cart-layout">
+      <!-- Left Items Container -->
+      <section class="cart-items-card" id="cart-items-container">
+        <!-- Rendered dynamically via script.js renderCartPage() -->
+      </section>
+
+      <!-- Right Summary Container -->
+      <aside id="cart-summary-container">
+        <!-- Rendered dynamically via script.js renderCartPage() -->
+      </aside>
+    </div>
+  </main>
+
+  <!-- Payment & Checkout Modal (Requirement 11: Payment Options) -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Secure Direct Farm Checkout</h3>
+        <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="background: var(--primary-50); border: 1px solid var(--primary-200); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 0.8rem; color: var(--primary-800); text-transform: uppercase; font-weight: 700;">Total Payable:</span>
+            <h4 id="modal-total-amount" style="font-size: 1.5rem; color: var(--primary-900); font-weight: 800;">₹0</h4>
+          </div>
+          <span style="font-size: 0.78rem; background: var(--surface); padding: 0.25rem 0.6rem; border-radius: var(--radius-full); color: var(--success); font-weight: 700; border: 1px solid var(--primary-200);">
+            ✓ 0% Middleman Cut
+          </span>
+        </div>
+
+        <form onsubmit="processOrderPlacement(event)">
+          <!-- Customer & Delivery Form -->
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--text-main);">1. Delivery Details</h4>
+
+          <div class="form-group">
+            <label class="form-label" for="checkout-name">Recipient Full Name *</label>
+            <input type="text" id="checkout-name" class="form-control" required placeholder="e.g. Aarav Sharma">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="checkout-phone">Mobile Number *</label>
+              <input type="tel" id="checkout-phone" class="form-control" required placeholder="+91 98200 12345">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkout-email">Email for Invoice</label>
+              <input type="email" id="checkout-email" class="form-control" placeholder="aarav@example.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="checkout-address">Complete Street Address *</label>
+            <input type="text" id="checkout-address" class="form-control" required placeholder="Flat/House No, Building, Street">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="form-group">
+              <label class="form-label" for="checkout-city">City / Pincode *</label>
+              <input type="text" id="checkout-city" class="form-control" required placeholder="Mumbai - 400050">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkout-slot">Harvest Delivery Slot</label>
+              <select id="checkout-slot" class="form-control">
+                <option>Tomorrow Morning (6:00 AM - 9:00 AM)</option>
+                <option>Tomorrow Afternoon (12:00 PM - 3:00 PM)</option>
+                <option>Tomorrow Evening (5:00 PM - 8:00 PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Payment Options Selector -->
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--text-main);">2. Select Payment Option</h4>
+
+          <div class="payment-options-grid">
+            <button type="button" class="payment-tab-btn active" data-method="upi" data-label="UPI / QR Pay (Instant)" onclick="setPaymentMethodTab('upi')">
+              <span style="font-size: 1.4rem;">📱</span>
+              <span>UPI / QR Pay</span>
+              <small style="color: var(--success); font-size: 0.72rem; font-weight: 700;">Zero Fee</small>
+            </button>
+
+            <button type="button" class="payment-tab-btn" data-method="card" data-label="Credit / Debit Card" onclick="setPaymentMethodTab('card')">
+              <span style="font-size: 1.4rem;">💳</span>
+              <span>Credit / Debit Card</span>
+              <small style="color: var(--text-muted); font-size: 0.72rem;">Visa / MC / RuPay</small>
+            </button>
+
+            <button type="button" class="payment-tab-btn" data-method="cod" data-label="Pay on Harvest Delivery (COD)" onclick="setPaymentMethodTab('cod')">
+              <span style="font-size: 1.4rem;">💵</span>
+              <span>Pay on Delivery</span>
+              <small style="color: var(--text-muted); font-size: 0.72rem;">Cash or UPI at Door</small>
+            </button>
+
+            <button type="button" class="payment-tab-btn" data-method="netbanking" data-label="Net Banking" onclick="setPaymentMethodTab('netbanking')">
+              <span style="font-size: 1.4rem;">🏦</span>
+              <span>Net Banking</span>
+              <small style="color: var(--text-muted); font-size: 0.72rem;">All Indian Banks</small>
+            </button>
+          </div>
+
+          <!-- Dynamic Payment Subforms -->
+          <div id="subform-upi" class="payment-subform" style="background: var(--surface-alt); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: center;">
+            <p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">Scan Direct Farmer VPA or Enter UPI ID:</p>
+            <div style="display: inline-block; background: #fff; padding: 0.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: 0.5rem;">
+              <div style="font-size: 2.2rem;">🏁 [ QR CODE ]</div>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">UPI ID: farmdirect.settle@okhdfcbank</span>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--success);">✓ 100% of payment goes directly to the harvest fund escrow.</p>
+          </div>
+
+          <div id="subform-card" class="payment-subform" style="display: none; background: var(--surface-alt); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+            <div class="form-group">
+              <label class="form-label">Card Number</label>
+              <input type="text" class="form-control" placeholder="4111 •••• •••• 1111" value="4111 2222 3333 4444">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label class="form-label">Expiry MM/YY</label>
+                <input type="text" class="form-control" placeholder="12/28" value="12/28">
+              </div>
+              <div class="form-group">
+                <label class="form-label">CVV</label>
+                <input type="password" class="form-control" placeholder="•••" value="888" maxlength="3">
+              </div>
+            </div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Demo Card Test Mode: Any 3 digit CVV is accepted.</span>
+          </div>
+
+          <div id="subform-cod" class="payment-subform" style="display: none; background: var(--surface-alt); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+            <p style="font-size: 0.875rem; color: var(--text-main);">
+              <strong>Pay on Delivery:</strong> Inspect the produce crate first upon arrival. Pay the courier via Cash, Google Pay, PhonePe, or Paytm once satisfied.
+            </p>
+          </div>
+
+          <div id="subform-netbanking" class="payment-subform" style="display: none; background: var(--surface-alt); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+            <label class="form-label">Select Bank:</label>
+            <select class="form-control">
+              <option>State Bank of India (SBI)</option>
+              <option>HDFC Bank</option>
+              <option>ICICI Bank</option>
+              <option>Axis Bank</option>
+              <option>Punjab National Bank</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            Confirm & Place Harvest Order
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Receipt Confirmation Modal -->
+  <div class="modal-overlay" id="receipt-modal">
+    <div class="modal-card" style="text-align: center; padding: 2.5rem 2rem;">
+      <div style="width: 64px; height: 64px; background: var(--primary-100); color: var(--primary-700); font-size: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+        ✓
+      </div>
+
+      <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--primary-900); margin-bottom: 0.4rem;">
+        Harvest Order Confirmed!
+      </h2>
+
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Your order has been allotted directly to our partner farmers. Harvesting will begin at sunrise.
+      </p>
+
+      <div style="background: var(--surface-alt); border-radius: var(--radius-md); padding: 1.25rem; text-align: left; margin-bottom: 1.5rem; font-size: 0.875rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Order Reference ID:</span>
+          <strong id="receipt-order-id" style="color: var(--primary-800); font-size: 1.05rem;">FD-2026-XXXX</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Amount Settled:</span>
+          <strong id="receipt-amount">₹0</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Payment Method:</span>
+          <strong id="receipt-method">UPI</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Delivery To:</span>
+          <span id="receipt-address" style="max-width: 60%; text-align: right; font-weight: 600;">Address</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <a id="receipt-track-btn" href="track-order.html" class="btn btn-primary btn-block">Track Order Live →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>🌱 Farm<span style="color: #34d399;">Direct</span></h3>
+        <p>A mission-driven agricultural technology platform bridging the gap between independent family farmers and conscientious urban households with zero unnecessary middlemen.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Marketplace</h4>
+        <div class="footer-links">
+          <a href="marketplace.html?cat=vegetables">Fresh Vegetables</a>
+          <a href="marketplace.html?cat=fruits">Orchard Fruits</a>
+          <a href="marketplace.html?cat=grains">Grains & Flours</a>
+          <a href="marketplace.html?cat=honey-oils">Raw Honey & Cold Oils</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Growers & Admin</h4>
+        <div class="footer-links">
+          <a href="register.html?role=farmer">Register as Farmer</a>
+          <a href="login.html">Farmer Login</a>
+          <a href="farmer-dashboard.html">Farmer Inventory Portal</a>
+          <a href="admin-dashboard.html">Admin Verification Desk</a>
+          <a href="track-order.html">Track Order Status</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Support</a>
+          <a href="contact.html#faq">FAQs & Return Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 FarmDirect Technologies. Pure HTML5, CSS3 & Vanilla JavaScript.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="track-order.html">Track Order</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

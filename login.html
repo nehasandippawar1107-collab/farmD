@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Login — FarmDirect</title>
+  <meta name="description" content="Log in to your FarmDirect customer, farmer, or admin account.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-login">
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🌱</div>
+        <span>Farm<span class="accent">Direct</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="track-order.html" class="nav-link">Track Order</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
+        </a>
+        <a href="register.html" class="btn btn-sm btn-primary">Create Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="auth-wrapper">
+      <div class="auth-header">
+        <h2>Welcome to FarmDirect</h2>
+        <p>Log in to access your direct farm purchases or grower dashboard.</p>
+      </div>
+
+      <!-- Quick Fill Demo Login Box -->
+      <div class="demo-account-box">
+        <h5>⚡ 1-Click Prototype Demo Logins:</h5>
+        <div class="demo-account-buttons">
+          <button type="button" class="demo-btn" onclick="quickFillLogin('customer')">👤 Customer Demo</button>
+          <button type="button" class="demo-btn" onclick="quickFillLogin('farmer')">👨‍🌾 Farmer Demo</button>
+          <button type="button" class="demo-btn" onclick="quickFillLogin('admin')">🛡️ Admin Demo</button>
+        </div>
+      </div>
+
+      <!-- Role Selector Tabs -->
+      <div class="role-tabs">
+        <button type="button" class="role-tab-btn active" data-auth-role="customer" onclick="document.querySelectorAll('.role-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');">
+          Customer
+        </button>
+        <button type="button" class="role-tab-btn" data-auth-role="farmer" onclick="document.querySelectorAll('.role-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');">
+          Farmer
+        </button>
+        <button type="button" class="role-tab-btn" data-auth-role="admin" onclick="document.querySelectorAll('.role-tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');">
+          Admin
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form onsubmit="handleLoginForm(event)">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-control" required placeholder="name@example.com" value="customer@farmdirect.com">
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <label class="form-label" for="login-password" style="margin-bottom: 0;">Password</label>
+            <a href="contact.html" style="font-size: 0.78rem; color: var(--primary-700);">Forgot password?</a>
+          </div>
+          <input type="password" id="login-password" class="form-control" required placeholder="••••••••" value="pass123">
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+          <input type="checkbox" id="remember-me" checked accent-color="var(--primary-600)">
+          <label for="remember-me">Keep me signed in on this device</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Sign In to FarmDirect
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+        Don't have an account yet?
+        <a href="register.html" style="color: var(--primary-700); font-weight: 700;">Register as Customer or Farmer</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border: none; padding-top: 1rem;">
+      <div>© 2026 FarmDirect Technologies. Pure HTML5, CSS3 & Vanilla JavaScript.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

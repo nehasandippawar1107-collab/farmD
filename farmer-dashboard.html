@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Portal & Inventory Dashboard — FarmDirect</title>
+  <meta name="description" content="Manage your direct farm harvests, update crop prices, adjust quantities in stock, and process customer orders.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-farmer-dashboard">
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <span>🌾 Farmer Workspace: 100% Direct Payouts • 0% Broker Commission.</span>
+    <span class="highlight-badge">Connected via Ratnagiri Sun Orchards</span>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🌱</div>
+        <span>Farm<span class="accent">Direct</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="track-order.html" class="nav-link">Track Order</a>
+        <a href="farmer-dashboard.html" class="nav-link active">Farmer Hub</a>
+        <a href="admin-dashboard.html" class="nav-link">Admin</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
+        </a>
+
+        <div class="auth-nav-slot">
+          <a href="login.html" class="btn btn-sm btn-secondary">Log In</a>
+          <a href="register.html" class="btn btn-sm btn-primary">Register</a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+    <!-- Dashboard Header -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="section-tag">Grower Control Center</span>
+        <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--primary-900); letter-spacing: -0.02em;">
+          Farmer Producer Dashboard
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          Welcome back, <strong>Ramesh Patel</strong> • Ratnagiri Sun Orchards (12 Acres Certified Organic)
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem;">
+        <button class="btn btn-primary" onclick="openAddCropModal()">
+          <span>+</span> List New Harvest Crop
+        </button>
+        <a href="marketplace.html" class="btn btn-secondary">Preview in Marketplace</a>
+      </div>
+    </div>
+
+    <!-- KPI Metric Cards -->
+    <div class="dashboard-grid">
+      <div class="dashboard-stat-card">
+        <div class="stat-icon-box">🥦</div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Live Listed Crops</span>
+          <h3 id="farmer-stat-crops" style="font-size: 1.85rem; font-weight: 800; color: var(--text-main);">16</h3>
+          <span style="font-size: 0.75rem; color: var(--success); font-weight: 600;">✓ All items publicly visible</span>
+        </div>
+      </div>
+
+      <div class="dashboard-stat-card">
+        <div class="stat-icon-box" style="background: #e0f2fe; color: #0369a1;">📦</div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Customer Orders</span>
+          <h3 id="farmer-stat-orders" style="font-size: 1.85rem; font-weight: 800; color: var(--text-main);">2</h3>
+          <span style="font-size: 0.75rem; color: var(--info); font-weight: 600;">Active harvest allotments</span>
+        </div>
+      </div>
+
+      <div class="dashboard-stat-card">
+        <div class="stat-icon-box" style="background: var(--accent-amber-light); color: var(--accent-earth);">💰</div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Total Payouts</span>
+          <h3 id="farmer-stat-earnings" style="font-size: 1.85rem; font-weight: 800; color: var(--primary-900);">₹1,741</h3>
+          <span style="font-size: 0.75rem; color: var(--success); font-weight: 600;">Direct UPI escrow settlement</span>
+        </div>
+      </div>
+
+      <div class="dashboard-stat-card">
+        <div class="stat-icon-box" style="background: #fdf2f8; color: #be185d;">⭐</div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Consumer Rating</span>
+          <h3 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main);">4.9 / 5.0</h3>
+          <span style="font-size: 0.75rem; color: var(--accent-amber); font-weight: 600;">★★★★★ Top-Tier Grower</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crop Inventory Management Section -->
+    <div style="background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm); margin-bottom: 3rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary-900);">Manage Your Crop Inventory</h3>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Update prices per kg/unit and monitor stock levels in real time.</p>
+        </div>
+        <button class="btn btn-sm btn-secondary" onclick="renderFarmerCropTable()">🔄 Refresh Catalog</button>
+      </div>
+
+      <div class="dashboard-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Produce Item</th>
+              <th>Your Direct Price</th>
+              <th>Available Stock</th>
+              <th>Harvest Timing</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="farmer-crop-table-body">
+            <!-- Populated dynamically via script.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Customer Orders for Your Farm -->
+    <div style="background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary-900);">Customer Orders for Your Harvest</h3>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Change fulfillment status as you harvest, pack, and hand over to cold courier.</p>
+        </div>
+      </div>
+
+      <div class="dashboard-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order Ref</th>
+              <th>Customer</th>
+              <th>Items Requested</th>
+              <th>Settlement Value</th>
+              <th>Current Status</th>
+              <th>Update Tracking</th>
+            </tr>
+          </thead>
+          <tbody id="farmer-orders-table-body">
+            <!-- Populated dynamically via script.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add New Crop Modal -->
+  <div class="modal-overlay" id="add-crop-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>List New Harvest Produce</h3>
+        <button class="modal-close" onclick="closeAddCropModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <form onsubmit="handleAddCropModal(event)">
+          <div class="form-group">
+            <label class="form-label" for="crop-name">Crop / Produce Name *</label>
+            <input type="text" id="crop-name" class="form-control" required placeholder="e.g. Organic Kesar Mangoes">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="crop-category">Category *</label>
+              <select id="crop-category" class="form-control">
+                <option value="vegetables">Fresh Vegetables</option>
+                <option value="fruits">Orchard Fruits</option>
+                <option value="grains">Grains & Flours</option>
+                <option value="honey-oils">Raw Honey & Oils</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="crop-price">Direct Price (₹) *</label>
+              <input type="number" id="crop-price" class="form-control" required placeholder="120" min="5" step="1">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="crop-unit">Selling Unit *</label>
+              <input type="text" id="crop-unit" class="form-control" required placeholder="per kg / per dozen / per 500g" value="per kg">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="crop-stock">Stock Units Available</label>
+              <input type="number" id="crop-stock" class="form-control" placeholder="100" value="100">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="crop-location">Farm Origin Location</label>
+            <input type="text" id="crop-location" class="form-control" placeholder="Ratnagiri, Maharashtra" value="Ratnagiri, Maharashtra">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="crop-image">Produce Photo Image URL (Optional)</label>
+            <input type="url" id="crop-image" class="form-control" placeholder="https://images.unsplash.com/...">
+            <div class="form-help">Leave blank to use a high-resolution organic farm produce fallback image.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
+            Publish Crop to Marketplace
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border: none; padding-top: 1rem;">
+      <div>© 2026 FarmDirect Technologies. Pure HTML5, CSS3 & Vanilla JavaScript.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="admin-dashboard.html">Admin Workspace</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

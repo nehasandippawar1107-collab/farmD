@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Harvest Order Tracking — FarmDirect</title>
+  <meta name="description" content="Track your fresh farm harvest order from morning field plucking to your doorstep in real time.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-track">
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <span>Cold-chain temperature tracked live: 4.2°C maintained across transit.</span>
+    <span class="highlight-badge">100% Farm Fresh Guarantee</span>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🌱</div>
+        <span>Farm<span class="accent">Direct</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="track-order.html" class="nav-link active">Track Order</a>
+        <a href="farmer-dashboard.html" class="nav-link" title="Farmer Inventory Portal">Farmer Hub</a>
+        <a href="admin-dashboard.html" class="nav-link" title="Marketplace Management">Admin</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-btn" aria-label="View Shopping Cart">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
+        </a>
+
+        <div class="auth-nav-slot">
+          <a href="login.html" class="btn btn-sm btn-secondary">Log In</a>
+          <a href="register.html" class="btn btn-sm btn-primary">Register</a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+    <div class="section-head" style="margin-bottom: 2rem;">
+      <span class="section-tag">Direct Farm Dispatch</span>
+      <h1 class="section-title">Track Your Fresh Harvest</h1>
+      <p class="section-subtitle">
+        Follow your produce journey directly from sunrise farm harvest to eco-packing and cold-chain doorstep arrival.
+      </p>
+
+      <!-- Order ID Search Bar -->
+      <div class="track-search-bar">
+        <input type="text" id="track-order-input" class="form-control" placeholder="Enter FarmDirect Order ID (e.g. FD-2026-8812)" value="FD-2026-8812">
+        <button id="track-search-btn" class="btn btn-primary">Track Order</button>
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <span>Quick Demo Orders:</span>
+        <button class="btn btn-sm btn-secondary" onclick="trackOrderById('FD-2026-8812')">Order #FD-2026-8812 (In Transit)</button>
+        <button class="btn btn-sm btn-secondary" onclick="trackOrderById('FD-2026-7490')">Order #FD-2026-7490 (Delivered)</button>
+      </div>
+    </div>
+
+    <!-- Live Stepper Container -->
+    <div class="track-order-card">
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-main);">Live Shipment Progress</h3>
+
+      <div class="tracking-timeline" id="timeline-steps-wrap">
+        <!-- Populated dynamically via script.js -->
+      </div>
+    </div>
+
+    <!-- Detailed Order Information Card -->
+    <div id="order-details-display">
+      <!-- Populated dynamically via script.js -->
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>🌱 Farm<span style="color: #34d399;">Direct</span></h3>
+        <p>A mission-driven agricultural technology platform bridging the gap between independent family farmers and conscientious urban households with zero unnecessary middlemen.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Marketplace</h4>
+        <div class="footer-links">
+          <a href="marketplace.html?cat=vegetables">Fresh Vegetables</a>
+          <a href="marketplace.html?cat=fruits">Orchard Fruits</a>
+          <a href="marketplace.html?cat=grains">Grains & Flours</a>
+          <a href="marketplace.html?cat=honey-oils">Raw Honey & Cold Oils</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Growers & Admin</h4>
+        <div class="footer-links">
+          <a href="register.html?role=farmer">Register as Farmer</a>
+          <a href="login.html">Farmer Login</a>
+          <a href="farmer-dashboard.html">Farmer Inventory Portal</a>
+          <a href="admin-dashboard.html">Admin Verification Desk</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Need Support?</h4>
+        <div class="footer-links">
+          <a href="contact.html">Customer Helpdesk</a>
+          <a href="contact.html#faq">Delivery Tracking FAQ</a>
+          <span style="font-size: 0.825rem; color: #a7f3d0; margin-top: 0.5rem; display: block;">Farmer Logistics Hotline:<br><strong>+91 1800-3276-347</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 FarmDirect Technologies. Pure HTML5, CSS3 & Vanilla JavaScript.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="cart.html">View Cart</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
